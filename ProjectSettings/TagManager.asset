@@ -8,6 +8,7 @@ TagManager:
   - Floor
   - Magma
   - Chain
+  - BrokenMachine
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - Obstacle
   - AttakArea
   - Chain
-  - 
+  - BrokenMachine
   - 
   - 
   - 
@@ -50,6 +51,9 @@ TagManager:
     locked: 0
   - name: Obstacle
     uniqueID: 170003747
+    locked: 0
+  - name: BrokenMachine
+    uniqueID: 2470445645
     locked: 0
   - name: Player
     uniqueID: 1914441699
