@@ -20,9 +20,6 @@ public class PlayerJetPack : MonoBehaviour
 
     class PushButton
     {
-        public bool pushZ;
-        public bool pushX;
-        public bool pushC;
         public bool pushSpace;
         public bool pushLeft;
         public bool pushRight;
@@ -48,11 +45,7 @@ public class PlayerJetPack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(playerRigidBody.velocity == Vector2.zero)
-        {
-            electricPower += 3;
-            CheckMaxEletricPower();
-        }
+
 
         if (!canControl)//コントロール不可能状態なら、ボタン入力を受け付けない
         {
@@ -64,18 +57,7 @@ public class PlayerJetPack : MonoBehaviour
         {
             pushButton.pushSpace = true;
         }
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            pushButton.pushZ = true;
-        }
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            pushButton.pushX = true;
-        }
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            pushButton.pushC = true;
-        }
+
 
 
         //十字入力
@@ -99,7 +81,30 @@ public class PlayerJetPack : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (pushButton.onChain)//チェーンを持っている場合
+        //エネルギー回復
+        if (playerRigidBody.velocity == Vector2.zero)
+        {
+            electricPower += 3;
+            CheckMaxEletricPower();
+        }
+
+        //水平方向速度調整
+        if(playerRigidBody.velocity.x < -0.1f)
+        {
+            playerRigidBody.velocity += new Vector2(0.1f, 0);
+        }
+        else if(playerRigidBody.velocity.x > 0.1f)
+        {
+            playerRigidBody.velocity -= new Vector2(0.1f, 0);
+        }
+        else
+        {
+            playerRigidBody.velocity -= Vector2.zero;
+        }
+
+
+        //チェーンを持っている場合
+        if (pushButton.onChain)
         {
             pushButton.onChain = false;
             if (pushButton.pushUp)
@@ -122,6 +127,10 @@ public class PlayerJetPack : MonoBehaviour
             pushButton.pushRight = false;
             playerTransForm.position += new Vector3(HorizonalSpeed, 0,0) ;
 
+            if (playerRigidBody.velocity.x < -0.5f)//速度を殺す
+            {
+                playerRigidBody.velocity += new Vector2(0.5f, 0);
+            }
         }
 
         if (pushButton.pushLeft)
@@ -129,6 +138,10 @@ public class PlayerJetPack : MonoBehaviour
             pushButton.pushLeft = false;
             playerTransForm.position += new Vector3(-HorizonalSpeed, 0, 0);
 
+            if (playerRigidBody.velocity.x > 0.5f)//速度を殺す
+            {
+                playerRigidBody.velocity -= new Vector2(0.5f, 0);
+            }
         }
 
         if (pushButton.pushUp)
@@ -147,7 +160,7 @@ public class PlayerJetPack : MonoBehaviour
 
                 if (playerRigidBody.velocity.y > VerticalMaxSpeed)
                 {
-                    playerRigidBody.velocity = new Vector2(playerRigidBody.velocity.x, VerticalMaxSpeed);
+                    playerRigidBody.velocity -= new Vector2(0, VerticalSpeed);
                 }
             }
         }
@@ -159,28 +172,10 @@ public class PlayerJetPack : MonoBehaviour
             }
         }
 
-
         if (pushButton.pushDown)
         {
             pushButton.pushDown = false;
         }
-
-
-        if (pushButton.pushZ)
-        {
-            pushButton.pushZ = false;
-        }
-
-        if (pushButton.pushX)
-        {
-            pushButton.pushX = false;
-        }
-
-        if (pushButton.pushC)
-        {
-            pushButton.pushC = false;
-        }
-
 
     }
 
