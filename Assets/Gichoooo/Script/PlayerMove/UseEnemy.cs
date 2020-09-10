@@ -28,12 +28,12 @@ public class UseEnemy : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.tag == "Magma" && Input.GetKeyDown(KeyCode.Z))
+        if(collision.tag == "Magma" && Input.GetKeyDown(KeyCode.Z) && jetPack.canControl)
         {
             jetPack.electricPower = 300;
             Destroy(collision.gameObject);
         }
-        else if (collision.tag == "Obstacle" && Input.GetKeyDown(KeyCode.C))
+        else if (collision.tag == "Obstacle" && Input.GetKeyDown(KeyCode.C) && jetPack.canControl)
         {
             if (collision.transform.position.x > transform.position.x)
             {
