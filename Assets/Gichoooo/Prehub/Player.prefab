@@ -146,12 +146,13 @@ GameObject:
   - component: {fileID: 8721692421370564283}
   - component: {fileID: 6772115856820144212}
   - component: {fileID: 1139337637297275359}
+  - component: {fileID: 9026994559475171788}
   - component: {fileID: 8721692421370564282}
   - component: {fileID: 8721692421370564281}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -207,7 +208,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1914441699
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: cb0cfacb7fa9a5a49a0736a0de2e14bc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -252,6 +253,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RockHitPunishmentPower: 20
   MagmaHitPunishmentPower: 20
+--- !u!114 &9026994559475171788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8721692421370564285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 379ee318be906ac4ba340c5d0a20fa1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
+  text: {fileID: 0}
 --- !u!50 &8721692421370564282
 Rigidbody2D:
   serializedVersion: 4
