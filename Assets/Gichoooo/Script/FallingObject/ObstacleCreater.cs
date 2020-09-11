@@ -7,6 +7,10 @@ public class ObstacleCreater : MonoBehaviour
     [SerializeField] Transform playerTF;
     [SerializeField] GameObject Obstacle;
     [SerializeField] int inicialObjectNum;
+
+    [SerializeField] int intervalFlame;
+    [SerializeField] int percent;
+
     ObjectPool pool;
 
     int time;
@@ -25,10 +29,13 @@ public class ObstacleCreater : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(++time >= 300)
+        if(++time >= intervalFlame)
         {
-            GameObject obj = pool.GetObject();
-            obj.transform.position = playerTF.position + new Vector3(Random.value * 60 - 30, 60, 0);
+            if(Random.value*100 < percent)
+            {
+                GameObject obj = pool.GetObject();
+                obj.transform.position = playerTF.position + new Vector3(Random.value * 60 - 30, 60, 0);
+            }
             time = 0;
         }
     }
