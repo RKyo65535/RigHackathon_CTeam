@@ -8,7 +8,7 @@ public class FallRock : MonoBehaviour
     Transform TF;
 
     // Start is called before the first frame update
-    void Awake()
+    void OnEnable()
     {
         TF = GetComponent<Transform>();
         objectRigidbody = GetComponent<Rigidbody2D>();
@@ -19,7 +19,7 @@ public class FallRock : MonoBehaviour
     {
         if (TF.position.y < -16)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }

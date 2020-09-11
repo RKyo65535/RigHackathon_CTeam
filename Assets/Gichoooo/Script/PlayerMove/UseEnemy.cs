@@ -31,7 +31,7 @@ public class UseEnemy : MonoBehaviour
         if(collision.tag == "Magma" && Input.GetKeyDown(KeyCode.Z) && jetPack.canControl)
         {
             jetPack.electricPower = 300;
-            Destroy(collision.gameObject);
+            collision.gameObject.SetActive(false);
         }
         else if (collision.tag == "Obstacle" && Input.GetKeyDown(KeyCode.C) && jetPack.canControl)
         {
@@ -43,7 +43,7 @@ public class UseEnemy : MonoBehaviour
             {
                 playerRigidBody.velocity = new Vector2(10, 60);
             }
-            Destroy(collision.gameObject);
+            collision.gameObject.SetActive(false);
         }
     }
 
