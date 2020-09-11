@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BrekenMachineMessageList : MonoBehaviour
 {
+    [SerializeField] AudioSource machineAudio;
     [SerializeField] int machineNum;
     string[] message = new string[20];
 
@@ -33,11 +34,15 @@ public class BrekenMachineMessageList : MonoBehaviour
 
     public string GetMessage()
     {
-        Debug.Log(machineNum);
-        Debug.Log(message[machineNum]);
+        //Debug.Log(machineNum);
+        //Debug.Log(message[machineNum]);
+        machineAudio.Play();
 
         return message[machineNum];
     }
 
-
+    public void Close()
+    {
+        machineAudio.Stop();
+    }
 }

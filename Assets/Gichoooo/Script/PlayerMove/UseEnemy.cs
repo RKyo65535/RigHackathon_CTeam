@@ -20,6 +20,9 @@ public class UseEnemy : MonoBehaviour
     PushButton pushButton;
 
     int count;
+
+    [SerializeField] AudioSource soundEffect;
+
     class PushButton
     {
         public bool pushZ;
@@ -72,6 +75,7 @@ public class UseEnemy : MonoBehaviour
         {
             jetPack.electricPower = jetPack.maxElectricPower-1;
             collision.gameObject.SetActive(false);
+            soundEffect.Play();
         }
         else if (collision.tag == "Obstacle" && pushButton.pushC && jetPack.canControl && target== Mode.Rock)
         {
@@ -83,6 +87,9 @@ public class UseEnemy : MonoBehaviour
             {
                 playerRigidBody.velocity = new Vector2(10, 40);
             }
+
+            soundEffect.Play();
+
             collision.gameObject.SetActive(false);
         }
     }
