@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlayerJetPack : MonoBehaviour
 {
+    [SerializeField] GameObject jetCage;
+
     public bool canControl;
 
     private Rigidbody2D playerRigidBody;
@@ -14,9 +16,10 @@ public class PlayerJetPack : MonoBehaviour
     [SerializeField] float VerticalSpeed;
     [SerializeField] float VerticalMaxSpeed;
     [SerializeField] float VerticalMinimumGuaranteeSpeed;//上方向加速時の最低保証スピード
+   
 
     [NonSerialized] public int electricPower;
-    [SerializeField] int maxElectricPower;
+    public int maxElectricPower;
 
     class PushButton
     {
@@ -45,6 +48,16 @@ public class PlayerJetPack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //エネルギーの表示非表示
+        if(electricPower == maxElectricPower)
+        {
+            jetCage.SetActive(false);
+        }
+        else
+        {
+            jetCage.SetActive(true);
+        }
+
 
 
         if (!canControl)//コントロール不可能状態なら、ボタン入力を受け付けない

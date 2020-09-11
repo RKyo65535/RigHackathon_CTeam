@@ -23,7 +23,7 @@ TagManager:
   - AttakArea
   - Chain
   - BrokenMachine
-  - 
+  - JetCage
   - 
   - 
   - 
@@ -57,4 +57,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 1914441699
+    locked: 0
+  - name: JetCage
+    uniqueID: 1803569683
     locked: 0
