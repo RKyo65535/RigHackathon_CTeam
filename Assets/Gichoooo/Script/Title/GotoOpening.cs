@@ -16,6 +16,7 @@ public class GotoOpening : MonoBehaviour
 
     void MovetoOpening()
     {
+        NumOfMachine.Reset();//触れた数をリセット
         SceneManager.LoadScene("Opening");
     }
 
