@@ -4,5 +4,17 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Gichoooo/Scene/Title.unity
+    guid: ec617e6f4e1474f45b7754b92250762b
+  - enabled: 1
+    path: Assets/Gichoooo/Scene/Opening.unity
+    guid: f2e30b96796b97842991bb89d353b33c
+  - enabled: 1
+    path: Assets/Gichoooo/Scene/DevelopScene.unity
+    guid: a5ee938e57b5d6d4590b972c9404d846
+  - enabled: 1
+    path: Assets/Gichoooo/Scene/Ending.unity
+    guid: fad35c086c0148b4983b05c3655386d6
   m_configObjects: {}

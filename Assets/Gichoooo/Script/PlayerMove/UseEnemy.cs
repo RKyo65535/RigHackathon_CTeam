@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class UseEnemy : MonoBehaviour
 {
+    enum Mode
+    {
+        Rock,Magma
+    }
+
+    [SerializeField] Mode target;
+
     [SerializeField] GameObject Player;
     PlayerJetPack jetPack;
     Rigidbody2D playerRigidBody;
@@ -13,6 +20,9 @@ public class UseEnemy : MonoBehaviour
     PushButton pushButton;
 
     int count;
+
+    [SerializeField] AudioSource soundEffect;
+
     class PushButton
     {
         public bool pushZ;
@@ -61,21 +71,25 @@ public class UseEnemy : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
         //Debug.Log(collision);
-        if(collision.tag == "Magma" && pushButton.pushZ && jetPack.canControl)
+        if(collision.tag == "Magma" && pushButton.pushZ && jetPack.canControl && target == Mode.Magma)
         {
             jetPack.electricPower = jetPack.maxElectricPower-1;
             collision.gameObject.SetActive(false);
+            soundEffect.Play();
         }
-        else if (collision.tag == "Obstacle" && pushButton.pushC && jetPack.canControl)
+        else if (collision.tag == "Obstacle" && pushButton.pushC && jetPack.canControl && target== Mode.Rock)
         {
             if (collision.transform.position.x > transform.position.x)
             {
-                playerRigidBody.velocity = new Vector2(-10, 60);
+                playerRigidBody.velocity = new Vector2(-10, 40);
             }
             else
             {
-                playerRigidBody.velocity = new Vector2(10, 60);
+                playerRigidBody.velocity = new Vector2(10, 40);
             }
+
+            soundEffect.Play();
+
             collision.gameObject.SetActive(false);
         }
     }

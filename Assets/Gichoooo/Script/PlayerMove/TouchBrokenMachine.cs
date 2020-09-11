@@ -22,6 +22,7 @@ public class TouchBrokenMachine : MonoBehaviour
     {
         if (collision.tag == "BrokenMachine")
         {
+            collision.GetComponent<BrekenMachineMessageList>().Close();
             canvas.SetActive(false);
         }
     }

@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlayerJetPack : MonoBehaviour
 {
+    [SerializeField]AudioSource chainAudio;
+
     [SerializeField] GameObject jetCage;
 
     public bool canControl;
@@ -132,6 +134,10 @@ public class PlayerJetPack : MonoBehaviour
                 playerTransForm.position += new Vector3(0, -HorizonalSpeed/2, 0);
             }
 
+            if (!chainAudio.isPlaying)
+            {
+                chainAudio.Play();
+            }
         }
 
 
