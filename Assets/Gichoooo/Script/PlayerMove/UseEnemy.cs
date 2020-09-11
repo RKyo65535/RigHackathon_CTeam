@@ -12,6 +12,7 @@ public class UseEnemy : MonoBehaviour
     [SerializeField] Mode target;
 
     [SerializeField] GameObject Player;
+    [SerializeField] GameObject kickEffect;
     PlayerJetPack jetPack;
     Rigidbody2D playerRigidBody;
 
@@ -89,7 +90,8 @@ public class UseEnemy : MonoBehaviour
             }
 
             soundEffect.Play();
-
+            GameObject obj = Instantiate(kickEffect);
+            obj.transform.position = collision.transform.position;
             collision.gameObject.SetActive(false);
         }
     }
