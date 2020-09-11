@@ -34,7 +34,7 @@ public class ObstacleCreater : MonoBehaviour
             if(Random.value*100 < percent)
             {
                 GameObject obj = pool.GetObject();
-                obj.transform.position = playerTF.position + new Vector3(Random.value * 60 - 30, 60, 0);
+                obj.transform.position = playerTF.position + new Vector3(Random.value * 60 - 30, 60,0);
             }
             time = 0;
         }

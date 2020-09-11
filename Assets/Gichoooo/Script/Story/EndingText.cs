@@ -35,7 +35,7 @@ public class EndingText : MonoBehaviour
             "謎が一つ解明へと向かうのであった。\n";
         rectTransform = GetComponent<RectTransform>();
         text = GetComponent<Text>();
-        text.text = endText;
+        text.text = BreakString(endText);
     }
 
     private void FixedUpdate()
@@ -49,6 +49,44 @@ public class EndingText : MonoBehaviour
             SceneManager.LoadScene("Title");
         }
     }
+
+    string BreakString( string t)
+    {
+        string newString="";
+        for(int i = 0;i< t.Length; i++)
+        {
+            if (t[i] == '\n')
+            {
+                newString += '\n';
+                continue;
+            }
+            float rand = Random.value * 20;
+
+            if (rand < NumOfMachine.GetNum())
+            {
+                newString += t[i];
+            }
+            else if(rand < 5)
+            {
+                newString += '◆';
+            }
+            else if (rand < 10)
+            {
+                newString += '■';
+            }
+            else if (rand < 15)
+            {
+                newString += 'O';
+            }
+            else if (rand < 17)
+            {
+                newString += 'ﾐ';
+            }
+        }
+
+        return newString;
+    }
+
 
 
 }
