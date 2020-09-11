@@ -1,32 +1,37 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 
 public class ShowAchievePer : MonoBehaviour
 {
-    Text text;
-    Transform TF;
-    Vector3 firstPos;
-    [SerializeField] GameObject player;
-    [SerializeField] int StartHeight;
-    [SerializeField] int GoalHeight;
 
+    [SerializeField] Sprite[] fonts = new Sprite[10];
+    [SerializeField]SpriteRenderer [] sprites = new SpriteRenderer[3];
 
+    [SerializeField] ShowAchievedHeight achievedHeight;
 
-    private void Awake()
-    {
-        text = GetComponent<Text>();
-        TF = GetComponent<Transform>();
-        firstPos = TF.localPosition;
-    }
 
     // Update is called once per frame
     void Update()
     {
-        int achievedHeight;
-        achievedHeight = (int)((player.transform.position.y - StartHeight) * 100 / (GoalHeight - StartHeight));
-        text.text = "" + achievedHeight;
+        int per = achievedHeight.ShowPercent();
+        ChangeValue(per);
     }
+
+    void ChangeValue(int num)
+    {
+        int n1 = num / 100;
+        int n2 = (num %100)/10;
+        int n3 = num % 10;
+
+        sprites[2].sprite = fonts[n3];
+        sprites[1].sprite = fonts[n2];
+        sprites[0].sprite = fonts[n1];
+
+    }
+
+
+
+
 }

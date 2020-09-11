@@ -14,6 +14,7 @@ public class ShowAchievedHeight : MonoBehaviour
     [SerializeField] int GoalHeight;
 
 
+
     private void Awake()
     {
         TF = GetComponent<Transform>();
@@ -28,5 +29,10 @@ public class ShowAchievedHeight : MonoBehaviour
 
         TF.localPosition = firstPos + new Vector3(0, achievedHeight, 0);
 
+    }
+
+    public int ShowPercent()
+    {
+        return (int)((player.transform.position.y - StartHeight) * 100 / (GoalHeight - StartHeight));
     }
 }
