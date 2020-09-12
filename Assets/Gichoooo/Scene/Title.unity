@@ -1308,7 +1308,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 5f609ca98158da14c9342c66c1fffa7c, type: 3}
-    m_FontSize: 20
+    m_FontSize: 16
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -1320,7 +1320,9 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 0.79
   m_Text: "\u30D7\u30ED\u30B0\u30E9\u30E0:gichoooo\r\n\u80CC\u666F\u30FBUI\u30C7\u30B6\u30A4\u30F3:Miyu\r\n3D\u30C7\u30B6\u30A4\u30F3\u30FB\u30A2\u30CB\u30E1\u30FC\u30B7\u30E7\u30F3:Hayato\n\n\u30B2\u30FC\u30E0BGM\r  
-    \u30B5\u30A4\u30C8\uFF1AOtoLogic\u69D8\r\nhttps://otologic.jp/\n\u66F2\u540D\uFF1A\u793E\u4F1A\u6D3E\u30C9\u30AD\u30E5\u30E1\u30F3\u30BF\u30EA\u30FC02\r\n\n\u30BF\u30A4\u30C8\u30EBBGM\r  
+    \u30B5\u30A4\u30C8\uFF1AOtoLogic\u69D8\r\nhttps://otologic.jp/\n\u66F2\u540D\uFF1A\u793E\u4F1A\u6D3E\u30C9\u30AD\u30E5\u30E1\u30F3\u30BF\u30EA\u30FC02\r\n\n\u30A8\u30F3\u30C9BGM  
+    \u30B5\u30A4\u30C8:  \u30DE\u30F3\u30DC\u30A6\u7279\u653B\u968A\nhttp://www.manbou2ndclass.net/p/index.html\n\u66F2\u540D: 
+    \u30D7\u30E9\u30CD\u30BF\u30EA\u30A6\u30E0\u30AC\u30FC\u30C7\u30F3\n\n\u30BF\u30A4\u30C8\u30EBBGM\r  
     \u30B5\u30A4\u30C8\uFF1APeriTune\r\u69D8\nhttps://peritune.com/\n\u66F2\u540D\uFF1ADungeon
     Tower \u30EC\u30C8\u30ED\u30B2\u30FC\u30E0\u98A8\n\n\u30B5\u30A6\u30F3\u30C9  
     \u30B5\u30A4\u30C8: \u52B9\u679C\u97F3\u30E9\u30DC\u69D8\nhttps://soundeffect-lab.info/\n\n\u30B5\u30A6\u30F3\u30C9  
