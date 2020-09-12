@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class EndingText : MonoBehaviour
 {
+    [SerializeField] GameObject button;
+
     string endText;
     Text text;
     RectTransform rectTransform;
@@ -36,6 +38,12 @@ public class EndingText : MonoBehaviour
         rectTransform = GetComponent<RectTransform>();
         text = GetComponent<Text>();
         text.text = BreakString(endText);
+
+        button.GetComponent<Button>().onClick.AddListener(() =>
+        {
+            SceneManager.LoadScene("Title");
+        }
+        );
     }
 
     private void FixedUpdate()
@@ -44,9 +52,9 @@ public class EndingText : MonoBehaviour
         {
             rectTransform.position += new Vector3(0, 0.6f, 0);
         }
-        if (time > endcount)
+        if (time == endcount)
         {
-            SceneManager.LoadScene("Title");
+            button.SetActive(true);
         }
     }
 
