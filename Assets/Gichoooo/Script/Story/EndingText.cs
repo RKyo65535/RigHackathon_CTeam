@@ -72,15 +72,19 @@ public class EndingText : MonoBehaviour
             }
             else if (rand < 10)
             {
-                newString += '■';
+                newString += '無';
             }
             else if (rand < 15)
             {
-                newString += 'O';
+                newString += '〇';
             }
             else if (rand < 17)
             {
-                newString += 'ﾐ';
+                newString += '×';
+            }
+            else
+            {
+                newString += '■';
             }
         }
 
