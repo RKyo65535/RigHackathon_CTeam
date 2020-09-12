@@ -16,7 +16,7 @@ public class OpeningText : MonoBehaviour
     private void Awake()
     {
         endText = "" +
-            "かつで無人探査機で幾度も探査を行ったものの、\n" +
+            "かつて無人探査機で幾度も探査を行ったものの、\n" +
             "すべて失敗に終わった、そんな火山がある。\n" +
             "噴火を繰り返し、岩や溶岩が飛び散るその火山へ\n" +
             "向かう一人の科学者がいた。\n" +
