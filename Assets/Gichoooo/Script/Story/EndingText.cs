@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class EndingText : MonoBehaviour
 {
+    [SerializeField] GameObject button;
+
     string endText;
     Text text;
     RectTransform rectTransform;
@@ -16,7 +18,7 @@ public class EndingText : MonoBehaviour
     private void Awake()
     {
         endText = "" +
-            "かつで無人探査機で幾度も探査を行ったものの、\n" +
+            "かつて無人探査機で幾度も探査を行ったものの、\n" +
             "すべて失敗に終わった、そんな火山があった。\n" +
             "そんな延々と火を噴き続ける火山の探索に初めて成功した。\n\n" +
             "噴火を繰り返し、岩や溶岩が飛び散るため、\n" +
@@ -36,6 +38,12 @@ public class EndingText : MonoBehaviour
         rectTransform = GetComponent<RectTransform>();
         text = GetComponent<Text>();
         text.text = BreakString(endText);
+
+        button.GetComponent<Button>().onClick.AddListener(() =>
+        {
+            SceneManager.LoadScene("Title");
+        }
+        );
     }
 
     private void FixedUpdate()
@@ -44,9 +52,9 @@ public class EndingText : MonoBehaviour
         {
             rectTransform.position += new Vector3(0, 0.6f, 0);
         }
-        if (time > endcount)
+        if (time == endcount)
         {
-            SceneManager.LoadScene("Title");
+            button.SetActive(true);
         }
     }
 

@@ -6,12 +6,15 @@ using UnityEngine;
 public class PlayerJetPack : MonoBehaviour
 {
     [SerializeField]AudioSource chainAudio;
+    [SerializeField] AudioSource jetAudio;
+    [SerializeField] AudioSource walkAudio;
+
 
     [SerializeField] GameObject jetCage;
 
     [SerializeField] scientistScript scientistScript;
 
-
+    [SerializeField] GameObject jet;
 
 
     public bool canControl;
@@ -113,6 +116,7 @@ public class PlayerJetPack : MonoBehaviour
             CheckMaxEletricPower();
         }
 
+
         //水平方向速度調整
         if(playerRigidBody.velocity.x < -0.1f)
         {
@@ -138,6 +142,12 @@ public class PlayerJetPack : MonoBehaviour
             {
                 playerRigidBody.velocity += new Vector2(0.5f, 0);
             }
+
+            if(playerRigidBody.velocity.y == 0 && !walkAudio.isPlaying)
+            {
+                walkAudio.Play();
+            }
+
         }
 
         if (pushButton.pushLeft)
@@ -150,6 +160,10 @@ public class PlayerJetPack : MonoBehaviour
             if (playerRigidBody.velocity.x > 0.5f)//速度を殺す
             {
                 playerRigidBody.velocity -= new Vector2(0.5f, 0);
+            }
+            if (playerRigidBody.velocity.y == 0 && !walkAudio.isPlaying)
+            {
+                walkAudio.Play();
             }
         }
 
@@ -179,9 +193,15 @@ public class PlayerJetPack : MonoBehaviour
 
 
 
-        if (pushButton.pushUp)
+        if (pushButton.pushUp)//Jet
         {
             scientistScript.JetAnim();
+            jet.SetActive(true);
+
+            if (!jetAudio.isPlaying)
+            {
+                jetAudio.Play();
+            }
 
             pushButton.pushUp = false;
             if (electricPower > 0)
@@ -203,6 +223,11 @@ public class PlayerJetPack : MonoBehaviour
         }
         else//上を押してないなら、急に減速
         {
+            jet.SetActive(false);
+            if (jetAudio.isPlaying)
+            {
+                jetAudio.Stop();
+            }
             if (playerRigidBody.velocity.y > 6)
             {
                 playerRigidBody.velocity -= new Vector2(0, 1f);
