@@ -9,6 +9,11 @@ public class PlayerJetPack : MonoBehaviour
 
     [SerializeField] GameObject jetCage;
 
+    [SerializeField] scientistScript scientistScript;
+
+
+
+
     public bool canControl;
 
     private Rigidbody2D playerRigidBody;
@@ -19,6 +24,10 @@ public class PlayerJetPack : MonoBehaviour
     [SerializeField] float VerticalMaxSpeed;
     [SerializeField] float VerticalMinimumGuaranteeSpeed;//上方向加速時の最低保証スピード
    
+
+
+
+
 
     [NonSerialized] public int electricPower;
     public int maxElectricPower;
@@ -96,6 +105,7 @@ public class PlayerJetPack : MonoBehaviour
 
     private void FixedUpdate()
     {
+        scientistScript.NormalAnim();
         //エネルギー回復
         if (playerRigidBody.velocity == Vector2.zero)
         {
@@ -118,9 +128,36 @@ public class PlayerJetPack : MonoBehaviour
         }
 
 
+        if (pushButton.pushRight)
+        {
+            scientistScript.WolkAnim(scientistScript.Way.RIGHT);
+            pushButton.pushRight = false;
+            playerTransForm.position += new Vector3(HorizonalSpeed, 0, 0);
+
+            if (playerRigidBody.velocity.x < -0.5f)//速度を殺す
+            {
+                playerRigidBody.velocity += new Vector2(0.5f, 0);
+            }
+        }
+
+        if (pushButton.pushLeft)
+        {
+
+            scientistScript.WolkAnim(scientistScript.Way.LEFT);
+            pushButton.pushLeft = false;
+            playerTransForm.position += new Vector3(-HorizonalSpeed, 0, 0);
+
+            if (playerRigidBody.velocity.x > 0.5f)//速度を殺す
+            {
+                playerRigidBody.velocity -= new Vector2(0.5f, 0);
+            }
+        }
+
+
         //チェーンを持っている場合
         if (pushButton.onChain)
         {
+            scientistScript.ChainAnim();
             pushButton.onChain = false;
             if (pushButton.pushUp)
             {
@@ -141,30 +178,11 @@ public class PlayerJetPack : MonoBehaviour
         }
 
 
-        if (pushButton.pushRight)
-        {
-            pushButton.pushRight = false;
-            playerTransForm.position += new Vector3(HorizonalSpeed, 0,0) ;
-
-            if (playerRigidBody.velocity.x < -0.5f)//速度を殺す
-            {
-                playerRigidBody.velocity += new Vector2(0.5f, 0);
-            }
-        }
-
-        if (pushButton.pushLeft)
-        {
-            pushButton.pushLeft = false;
-            playerTransForm.position += new Vector3(-HorizonalSpeed, 0, 0);
-
-            if (playerRigidBody.velocity.x > 0.5f)//速度を殺す
-            {
-                playerRigidBody.velocity -= new Vector2(0.5f, 0);
-            }
-        }
 
         if (pushButton.pushUp)
         {
+            scientistScript.JetAnim();
+
             pushButton.pushUp = false;
             if (electricPower > 0)
             {
@@ -195,6 +213,8 @@ public class PlayerJetPack : MonoBehaviour
         {
             pushButton.pushDown = false;
         }
+
+
 
     }
 
